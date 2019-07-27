@@ -4,7 +4,7 @@
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
 a
-        <title>Laravel welcome home2asdsadfsdf3sdsdf</title>
+        <title>Laravel welcome home2asdsadfsdf3jhsdsdf</title>
 
         <!-- Fonts -->
         <link href="https://fonts.googleapis.com/css?family=Nunito:200,600" rel="stylesheet">
