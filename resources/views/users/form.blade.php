@@ -1,10 +1,10 @@
-
 @csrf
 <div class="form-group">
 
     <label for="name">Name</label>
-    <input type="text" class="form-control" name="name"></div>
+    <input type="text" class="form-control" name="name">
 </div>
+
 <div class="form-group">
     <label for="email">Email</label>
     <input type="text" class="form-control" name="email">
@@ -16,5 +16,5 @@
 </div>
 <div class="form-group">
     <label for="confirm_password">Confirm password</label>
-    <input type="text" class="form-control" name="confirm_password">
+    <input type="password" class="form-control" name="confirm_password">
 </div>

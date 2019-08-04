@@ -12,7 +12,7 @@
 */
 
 Route::get('/', 'PostController@index');
-Route::prefix('users')->group(function(){
+Route::prefix('dashboard')->group(function(){
     Route::get('/', 'UserController@index')->name('users.index');
     Route::get('/create', 'UserController@create')->name('users.create');
     Route::post('/', 'UserController@store')->name('users.store');

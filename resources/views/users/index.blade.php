@@ -26,11 +26,21 @@
                         <td>
                             <a href="{{route('users.show', ['id' => $user->id])}}"><i class="fas px-1 fa-eye"></i></a>
                             <a href="{{route('users.update', ['id' => $user->id])}}"><i
-                                        class="fas px-1 fa-edit"></i></a>
-                            <a href="{{route('users.delete', ['id' => $user->id])}}"><i
-                                        class="fas px-1 fa-trash"></i></a>
+                                    class="fas px-1 fa-edit"></i></a>
+                            <a href="{{route('users.delete', ['id' => $user->id])}}"
+                               onclick="event.preventDefault();
+                                   document.querySelector('#delete-form-{{$user->id}}').submit()"
+                            >
+                            <i class="fas px-1 fa-trash"></i>
+                            </a>
+
                         </td>
                     </tr>
+                    <form id="delete-form-{{$user->id}}" method="POST"
+                          action="{{route('users.delete', ['id' => $user->id])}}">
+                        @method('DELETE')
+                        @csrf
+                    </form>
                 @endforeach
                 </tbody>
 
@@ -39,4 +49,5 @@
             {{$users->links()}}
         </div>
     </div>
+
 @endsection
