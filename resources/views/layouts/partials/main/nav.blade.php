@@ -1,18 +1,9 @@
-<div class="ts-menu row justify-content-end">
-    <div class="col-auto">
-        @auth
-            <a href="{{ url('/home') }}">Home</a>
-            <a class="" href="{{ url('/logout') }}"
-               onclick="event.preventDefault();
-                        document.getElementById('logout-form').submit();">
-                {{ __('Logout') }}
-            </a>
-
-            <form id="logout-form" action="{{ url('/logout') }}" method="POST" style="display: none;">
-                @csrf
-            </form>
-        @else
-            <a href="{{ route('login') }}">Login</a>
-        @endauth
+<div class="container p-0">
+    <div class="ts-menu row no-gutters align-items-end justify-content-end pt-5 pb-3">
+        <div class="col display-4">
+            <a class="no-link-style" href="{{url('/')}}">{{ config('app.name')}}</a></div>
+        <div class="col-auto">
+            @include('layouts.partials.account')
+        </div>
     </div>
 </div>

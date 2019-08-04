@@ -7,5 +7,13 @@
 // Bootstrap
 @import '~bootstrap/scss/bootstrap';
 
+//Font awesome
+@import '~@fortawesome/fontawesome-free/css/all.min.css';
+
 // Layout
 @import './layout/main/index';
+
+.no-link-style {
+  color: inherit !important;
+  text-decoration: none !important;
+}

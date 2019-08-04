@@ -10,11 +10,8 @@
     <div class="container p-0 pt-5">
         @include('layouts.partials.main.header')
         <div class="row no-gutters">
-            <div class="col-10">
+            <div class="col-12">
                 @yield('content')
-            </div>
-            <div class="col">
-                @yield('sidebar')
             </div>
         </div>
     </div>

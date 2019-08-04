@@ -11,10 +11,17 @@
 |
 */
 
-Route::get('/', function () {
-    return view('index');
+Route::get('/', 'PostController@index');
+Route::prefix('users')->group(function(){
+    Route::get('/', 'UserController@index')->name('users.index');
+    Route::get('/create', 'UserController@create')->name('users.create');
+    Route::post('/', 'UserController@store')->name('users.store');
+    Route::prefix('/{user}')->group(function() {
+        Route::get('/', 'UserController@show')->name('users.show');
+        Route::get('/edit', 'UserControler@edit')->name('users.edit');
+        Route::put('/','UserController@update')->name('users.update');
+        Route::delete('/', 'UserController@delete')->name('users.delete');
+    });
+
 });
-
 Auth::routes();
-
-Route::get('/home', 'HomeController@index')->name('home');
