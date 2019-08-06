@@ -6,8 +6,7 @@
                 <h1 class="col display-5">Users</h1>
                 <a href="{{route('users.create')}}" class="col-auto btn btn-primary">New User</a>
             </div>
-
-
+            @include('parts.messages')
             <table class="table table-striped">
                 <thead>
                 <tr>
@@ -25,9 +24,9 @@
                         <td>{{$user->email}}</td>
                         <td>
                             <a href="{{route('users.show', ['id' => $user->id])}}"><i class="fas px-1 fa-eye"></i></a>
-                            <a href="{{route('users.update', ['id' => $user->id])}}"><i
+                            <a href="{{route('users.edit', ['id' => $user->id])}}"><i
                                     class="fas px-1 fa-edit"></i></a>
-                            <a href="{{route('users.delete', ['id' => $user->id])}}"
+                            <a href="{{route('users.destroy', ['id' => $user->id])}}"
                                onclick="event.preventDefault();
                                    document.querySelector('#delete-form-{{$user->id}}').submit()"
                             >
@@ -37,7 +36,7 @@
                         </td>
                     </tr>
                     <form id="delete-form-{{$user->id}}" method="POST"
-                          action="{{route('users.delete', ['id' => $user->id])}}">
+                          action="{{route('users.destroy', ['id' => $user->id])}}">
                         @method('DELETE')
                         @csrf
                     </form>

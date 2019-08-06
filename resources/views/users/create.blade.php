@@ -5,18 +5,13 @@
             <div class="card">
                 <div class="card-header">User</div>
                 <div class="card-body">
-                    @if ($errors->any())
-                        <div class="alert alert-danger">
-                            <ul>
-                                @foreach ($errors->all() as $error)
-                                    <li>{{ $error }}</li>
-                                @endforeach
-                            </ul>
-                        </div>
-                        <br />
-                    @endif
+                    @include('parts.messages')
                     <form method="POST" action="{{route('users.store')}}">
                         @include('users.form')
+                        <div class="form-group">
+                            <label for="password">Password</label>
+                            <input class="form-control" type="password" id="password" name="password" />
+                        </div>
                         <button class="btn btn-primary" type="submit">Create user</button>
                     </form>
                 </div>

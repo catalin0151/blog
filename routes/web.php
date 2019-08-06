@@ -12,16 +12,21 @@
 */
 
 Route::get('/', 'PostController@index');
-Route::prefix('users')->group(function(){
-    Route::get('/', 'UserController@index')->name('users.index');
-    Route::get('/create', 'UserController@create')->name('users.create');
-    Route::post('/', 'UserController@store')->name('users.store');
-    Route::prefix('/{user}')->group(function() {
-        Route::get('/', 'UserController@show')->name('users.show');
-        Route::get('/edit', 'UserControler@edit')->name('users.edit');
-        Route::put('/','UserController@update')->name('users.update');
-        Route::delete('/', 'UserController@delete')->name('users.delete');
-    });
-
+//Route::prefix('users')->group(function(){
+//    Route::get('/', 'UserController@index')->name('users.index');
+//    Route::get('/create', 'UserController@create')->name('users.create');
+//    Route::post('/', 'UserController@store')->name('users.store');
+//    Route::prefix('/{user}')->group(function() {
+//        Route::get('/', 'UserController@show')->name('users.show');
+//        Route::get('/edit', 'UserControler@edit')->name('users.edit');
+//        Route::put('/','UserController@update')->name('users.update');
+//        Route::delete('/', 'UserController@delete')->name('users.delete');
+//    });
+//
+//});
+Route::resource('users', 'UserController');
+Route::prefix('users')->group(function() {
+   Route::get('/edit-password/{id}', 'UserController@editPassword')->name('users.edit-password');
+   Route::put('/update-password/{id}', 'UserController@updatePassword')->name('users.update-password');
 });
 Auth::routes();
