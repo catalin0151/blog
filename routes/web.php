@@ -24,9 +24,12 @@ Route::get('/', 'PostController@index');
 //    });
 //
 //});
-Route::resource('users', 'UserController');
-Route::prefix('users')->group(function() {
-   Route::get('/edit-password/{id}', 'UserController@editPassword')->name('users.edit-password');
-   Route::put('/update-password/{id}', 'UserController@updatePassword')->name('users.update-password');
-});
 Auth::routes();
+Route::middleware(['admin'])->group(function() {
+    Route::resource('users', 'UserController');
+    Route::prefix('users')->group(function() {
+        Route::get('/edit-password/{id}', 'UserController@editPassword')->name('users.edit-password');
+        Route::put('/update-password/{id}', 'UserController@updatePassword')->name('users.update-password');
+    });
+});
+

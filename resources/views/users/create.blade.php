@@ -12,6 +12,10 @@
                             <label for="password">Password</label>
                             <input class="form-control" type="password" id="password" name="password" />
                         </div>
+                        <div class="form-group">
+                            <label for="password_confirmation">Password confirmation</label>
+                            <input class="form-control" type="password" id="password_confirmation" name="password_confirmation" />
+                        </div>
                         <button class="btn btn-primary" type="submit">Create user</button>
                     </form>
                 </div>

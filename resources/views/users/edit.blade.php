@@ -5,6 +5,7 @@
             <div class="card">
                 <div class="card-header">Editing {{$user->name}}</div>
                 <div class="card-body">
+                    @include('parts.messages')
                     <form method="POST" action="{{route('users.update', ['id' => $user->id])}}">
                         @method('PUT')
                         @include('users.form')

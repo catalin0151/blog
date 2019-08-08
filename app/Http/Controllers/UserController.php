@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Http\Controllers\Controller;
+use App\Role;
 use App\User;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\View\View;
@@ -12,7 +13,7 @@ use App\Http\Requests\StoreUsers;
 class UserController extends Controller
 {
     public function index() {
-        $users = User::paginate(5);
+        $users = User::paginate(10);
         return view('users.index', [
             'users' => $users
         ]);
@@ -25,8 +26,10 @@ class UserController extends Controller
     public function store(StoreUsers $request) {
         $request->validated();
         $input = $request->all();
+        $userRole = Role::getBySlug('user');
         User::create(array_merge($input, [
             'password' => Hash::make($input['password']),
+            'role_id' => $userRole->id
         ]));
         return redirect()->route('users.index')->with(['success' => 'User created']);
     }
@@ -60,13 +63,15 @@ class UserController extends Controller
         $user = User::find($id);
         return view('users.edit-password')->with(['user' => $user]);
     }
+
     public function updatePassword(Request $request, $id) {
         $request->validate([
             'password' => 'required|confirmed',
         ]);
-        $user =User::find($id);
+        $user = User::find($id);
         $user->password = Hash::make($request->input('password'));
         $user->save();
-        return redirect()->route('users.edit-password', ['id' => $user->id])->with(['success' => 'Password successfully changed']);
+        return redirect()->route('users.edit-password',
+            ['id' => $user->id])->with(['success' => 'Password successfully changed']);
     }
 }

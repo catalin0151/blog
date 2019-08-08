@@ -13,7 +13,9 @@
              aria-labelledby="user-menu-button"
         >
             <a class="dropdown-item" href="#">Account</a>
-            <a class="dropdown-item" href="{{route('users.index')}}">Dashboard</a>
+            @if (Auth::user()->isAdmin())
+                <a class="dropdown-item" href="{{route('users.index')}}">Dashboard</a>
+            @endif
             <a class="dropdown-item" href="{{route('logout')}}"
                onclick="event.preventDefault();
                                     document.getElementById('logout-form').submit();">
