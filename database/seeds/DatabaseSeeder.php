@@ -4,7 +4,7 @@ use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\Hash;
 use App\User;
 use App\Role;
-
+use Faker\Factory as Faker;
 
 class DatabaseSeeder extends Seeder
 {
@@ -32,5 +32,15 @@ class DatabaseSeeder extends Seeder
             'password' => Hash::make('admin'),
             'role_id' => $adminRole->id,
         ]);
+        $faker = Faker::create();
+        foreach(range(1,10) as $user) {
+            User::create([
+                'name' =>  $faker->name,
+                'email' => $faker->email,
+                'password' => Hash::make('admin'),
+                'role_id' => $adminRole->id,
+            ]);
+        }
+
     }
 }

@@ -14,8 +14,10 @@ class UserController extends Controller
 {
     public function index() {
         $users = User::paginate(10);
+        $links = $users->appends(['sort' => 'id'])->links();
         return view('users.index', [
-            'users' => $users
+            'users' => $users,
+            'links' => $links
         ]);
     }
 
